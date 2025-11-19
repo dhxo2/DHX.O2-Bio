@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link in Bio - Liquid Glass Theme</title>
+    <!-- Memuat Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Menggunakan font Inter --><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+    <style>
+        /* Mengatur default font dan transisi (Hanya Light Mode) */
+        :root {
+            --light-bg-color: #ffffff;                      /* Latar Belakang Putih */
+            --glass-light-color: rgba(255, 255, 255, 0.75); /* Warna Kaca Terang */
+            --glass-light-border: rgba(0, 0, 0, 0.1);       /* Border Kaca Terang */
+            --text-light-color: #1f2937;                    /* Teks Gelap */
+            --link-light-text: #1f2937;
+            --link-light-hover: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-light-color);
+            transition: background-color 0.4s, color 0.4s;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; 
+            background-color: var(--light-bg-color);
+            overflow: hidden; /* Mencegah scrollbar muncul karena teks background yang besar */
+        }
+
+        /* --- STYLING UTAMA GLASS MORPHISM / LIQUID GLASS --- */
+        .glass-card {
+            background-color: var(--glass-light-color);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-light-border);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+            position: relative; 
+            z-index: 10;
+        }
+
+        /* Styling untuk Tombol Link */
+        .link-button {
+            background-color: var(--glass-light-color);
+            border: 1px solid var(--glass-light-border);
+            color: var(--link-light-text);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s, box-shadow 0.2s, color 0.2s, transform 0.1s;
+        }
+        .link-button:hover {
+            background-color: var(--link-light-hover);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-1px);
+        }
+        
+        /* --- STYLING UNTUK ANIMASI BACKGROUND TEKS --- */
+        .animated-background-row { /* Mengubah ID menjadi class untuk banyak baris */
+            position: absolute; /* Menggunakan absolute untuk menempatkan setiap baris */
+            left: 0;
+            width: 200%; /* Dua kali lebar untuk efek loop mulus */
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0; 
+        }
+
+        /* Penempatan setiap baris - Diperbarui untuk 4 baris dan lebih cepat */
+        #row-1 { top: 0vh; animation: scroll-text 30s linear infinite; }
+        #row-2 { top: 25vh; animation: scroll-text-reverse 35s linear infinite; } /* Arah berlawanan */
+        #row-3 { top: 50vh; animation: scroll-text 40s linear infinite; }
+        #row-4 { top: 75vh; animation: scroll-text-reverse 32s linear infinite; } /* Arah berlawanan */
+        /* Menggunakan vh untuk 'top' agar posisi responsif terhadap tinggi layar */
+
+        .animated-background-row span {
+            font-size: 15vw; /* Ukuran teks besar, responsif */
+            font-weight: 900;
+            line-height: 1;
+            padding: 0 2vw;
+            color: rgba(0, 0, 0, 0.05); /* HITAM, transparan (Light Mode) */
+            display: inline-block; /* Pastikan span berada dalam satu baris */
+            transition: color 0.4s;
+        }
+
+        /* Animasi geser ke kiri */
+        @keyframes scroll-text {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); } 
+        }
+
+        /* Animasi geser ke kanan (berlawanan) */
+        @keyframes scroll-text-reverse {
+            0% { transform: translateX(-50%); } /* Mulai dari posisi akhir animasi normal */
+            100% { transform: translateX(0%); } /* Kembali ke posisi awal */
+        }
+
+        /* Media queries untuk menyesuaikan ukuran font dan posisi baris di layar kecil */
+        @media (max-width: 768px) {
+            .animated-background-row span {
+                font-size: 25vw; /* Lebih besar di mobile agar lebih menonjol */
+            }
+            /* Menyesuaikan posisi baris untuk 4 baris di layar kecil */
+            #row-1 { top: 0vh; }
+            #row-2 { top: 25vh; }
+            #row-3 { top: 50vh; }
+            #row-4 { top: 75vh; }
+        }
+    </style>
+</head>
+<body class="p-4">
+    
+    <!-- Animated Background Text Container --><div id="animated-background">
+        <!-- Baris 1 --><div id="row-1" class="animated-background-row">
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+        </div>
+        <!-- Baris 2 --><div id="row-2" class="animated-background-row">
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+        </div>
+        <!-- Baris 3 --><div id="row-3" class="animated-background-row">
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+        </div>
+        <!-- Baris 4 --><div id="row-4" class="animated-background-row">
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+            <span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span><span>DHX.O2</span>
+        </div>
+        <!-- Baris 5 (Dihapus) -->
+    </div>
+    
+    <div id="app" class="w-full max-w-md mx-auto p-6 md:p-8 rounded-3xl glass-card">
+        
+        <!-- Toggle Mode Gelap/Terang telah dihapus --><div class="flex justify-end mb-8">
+            <!-- Menghapus toggle container dan isinya -->
+        </div>
+        
+        <!-- Foto Profil --><div class="flex justify-center mb-4 mt-4"> 
+            <img src="logo.png" 
+                alt="Foto Profil" 
+                class="w-24 h-24 rounded-full border-4 border-white/50 object-cover shadow-xl transition-all duration-400">
+        </div>
+        
+        <!-- Nama dan Deskripsi --><div class="text-center mb-8">
+            <h1 class="text-2xl font-bold mb-1 transition-colors duration-400">DHX.O2</h1>
+            <p class="text-sm transition-colors duration-400">Solusi Digital Terbaik Anda</p>
+        </div>
+        
+        <!-- Daftar Tautan --><div class="space-y-4">
+
+            <!-- LINK 1 --><a href="https://lynk.id/o2.company" target="_blank" class="link-button block text-center py-3 rounded-xl backdrop-blur-sm">
+                Lynk.id Store
+            </a>
+            
+            <!-- LINK 2 --><a href="https://tee.pub/lic/DHXO2" target="_blank" class="link-button block text-center py-3 rounded-xl backdrop-blur-sm">
+                TeePublic Store
+            </a>
+        </div>
+        
+    </div>
+
+    <script>
+        // Semua kode JavaScript untuk Toggle Mode Gelap telah dihapus.
+        // Fungsi initializeTheme, applyDarkMode, toggleTheme, dan event listeners dihilangkan.
+    </script>
+</body>
+</html>
